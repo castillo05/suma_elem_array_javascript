@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <input type="number" name="numero" id="numero">
+    <input required type="number" name="numero" id="numero">
     <input type="button" id="agregar" value="Agregar elemento al array" onclick="agregar()">
     <br><br>
     <input type="number" name="num" id="numCalc">
@@ -24,9 +24,14 @@
         var array=new Array();
         function reiniciarArray() {
             localStorage.clear();
+            alert('Array Reiniciado')
         }
         function agregar(){
             var numero= document.getElementById('numero').value;
+            if(numero===''){
+                alert('Por favor ingrese un numero')
+                return true;
+            }
             if(array.length>3){
                 alert('Solo se permiten 4 numeros')
             }else{
