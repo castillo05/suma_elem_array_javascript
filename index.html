@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test</title>
+</head>
+<body>
+
+    <input type="number" name="numero" id="numero">
+    <input type="button" id="agregar" value="Agregar elemento al array" onclick="agregar()">
+    <br><br>
+    <input type="number" name="num" id="numCalc">
+    <input type="button" id="test" value="Calcular" onclick="test()">
+    <input type="button" id="test" value="Reiniciar Array" onclick="reiniciarArray()">
+    <br><br>
+    <label for="" id="result"></label>
+    <br><br>
+    
+
+    <script>
+        var button=document.getElementById('test');
+        var array=new Array();
+        function reiniciarArray() {
+            localStorage.clear();
+        }
+        function agregar(){
+            var numero= document.getElementById('numero').value;
+            if(array.length>3){
+                alert('Solo se permiten 4 numeros')
+            }else{
+                array.push(parseInt(numero));
+            localStorage.setItem('array', JSON.stringify(array))
+           
+           
+            
+            }
+           
+           
+        }
+        function test() {
+            document.getElementById('result').innerHTML=' ';
+            const myArray = JSON.parse(localStorage.getItem('array'));
+
+            var numCalc= parseInt(document.getElementById('numCalc').value);
+           
+            const sumArray = myArray.reduce((prev, curr) => prev + curr);
+           
+            for (let index = 0; index < myArray.length; index++) {
+                 
+                   if(myArray[0]+myArray[index]===numCalc){
+                       console.log(true)
+                       document.getElementById('result').innerHTML='TRUE';
+                   }else if(myArray[1]+myArray[index]===numCalc){
+                       console.log(true)
+                       document.getElementById('result').innerHTML='TRUE';
+                   }else if(myArray[2]+myArray[index]===numCalc){
+                       console.log(true)
+                       document.getElementById('result').innerHTML='TRUE';
+                   }else if(myArray[3]+myArray[index]===numCalc){
+                       console.log(true)
+                       document.getElementById('result').innerHTML='TRUE';
+                   }
+                   
+
+                }
+        
+
+        }
+    </script>
+    
+</body>
+</html>
